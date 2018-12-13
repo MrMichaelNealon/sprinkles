@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<meta content="True" name="HandheldFriendly">	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <title>
+            GrovePeak
+        </title>
+
+		<script src="plugins/jquery-1.11.0.js"></script>
+        <script src="plugins/jquery-colour.js"></script>
+        
+        <script src="app/sprinkles.js"></script>
+    </head>
+    <body>
+        <div id="outer">
+            <div id="inner">
+                <div id="header">
+                    Header
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                var s = sprinkles({
+                    "parent_id": "header"
+                });
+
+                var _sprinkle_this = "Sprinkles";
+
+                var _fw_start = 0;
+                var _fw_end = -1;
+
+                var _bw_start = (_sprinkle_this.length - 1);
+                var _bw_end = 0;
+
+                s.getSprinkles(_sprinkle_this);
+
+                function switchSprinkleDirection() {
+                    let _bw_s = _fw_start;
+                    let _bw_e = _fw_end;
+
+                    _fw_start = _bw_start;
+                    _fw_end = _bw_end;
+
+                    _bw_start = _bw_s;
+                    _bw_end = _bw_e;
+                }
+                
+                function goBackwards() {
+                    s.sprinkle({
+                        "start": _bw_start,
+                        "end": _bw_end,
+                        "style": {
+                            "color": "#1E90FF"
+                        },
+                        "duration": 200,
+                        "easing": "linear",
+                        "finished": function() {
+                            setTimeout(function() {
+                                goForwards();
+                            }, 100);
+                        }
+                    });
+                }
+
+                function goForwards() {
+                    s.sprinkle({
+                        "start": _fw_start,
+                        "end": _fw_end,
+                        "style": {
+                            "color": "#FFF"
+                        },
+                        "duration": 200,
+                        "easing": "linear",
+                        "finished": function() {
+                            setTimeout(function() {
+                                switchSprinkleDirection();
+                                goBackwards();
+                            }, 100);
+                        }
+                    });
+                }
+                
+                goForwards();
+            });
+        </script>
+    </body>
+</html>

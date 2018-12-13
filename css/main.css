@@ -1,0 +1,61 @@
+*,
+body
+{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+#outer {
+    position: absolute;
+    float: left;
+    
+    top: 0%; left: 0%;
+    width: 100%; height: 100%;
+
+    box-sizing: border-box;
+
+    background: #156;
+}
+
+    #inner {
+        position: relative;
+        float: left;
+        
+        top: 5%; left: 5%;
+        width: 90%; height: 90%;
+
+        box-sizing: border-box;
+
+        color: #FFF;
+        background: none;
+    }
+
+
+#header {
+    position: absolute;
+
+    top: 42.5vh;
+    left: 25%;
+    width: 50%;
+    height: auto;
+
+    color: #1E90FF;
+}
+
+    .sprinkle {
+        position: relative;
+        float: left;
+
+        margin: 0;
+        padding: 0;
+
+        text-align: center;
+
+        font-size: 32px;
+        font-weight: bold;
+        font-family: Helvetica, sans-serif;
+    }
+
